@@ -1,0 +1,29 @@
+
+.boxes {
+  width: 100%;
+  //
+  // display: grid;
+  //grid-gap: 2em;
+  //grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.box {
+//  display: flex;
+text-align: center;
+  width: 250px; height: 300px;
+  font-size: 2em;
+  //padding: 0.5em;
+  line-height: 1;
+  margin: 20px;
+  padding: 20px;
+  background-position:  0 0, 0 0, 100% 0, 0 100%;
+  background-size: 3px 100%, 100% 3px, 3px 100% , 100% 3px;
+  background-repeat: no-repeat;
+}
+
+.box-e { // Cornered
+  background-image:
+          linear-gradient(0deg, var(--clr-border), var(--clr-border) 5%, transparent 25%, transparent 75%, var(--clr-border) 75%), linear-gradient(90deg, var(--clr-border), var(--clr-border) 5%, transparent 5%, transparent 95%, var(--clr-border) 75%), linear-gradient(180deg, var(--clr-border), var(--clr-border) 7%, transparent 25%, transparent 82%, var(--clr-border) 75%), linear-gradient(270deg, var(--clr-border), var(--clr-border) 5%, transparent 5%, transparent 95%, var(--clr-border) 100%)
+
+;
+}

@@ -1,0 +1,17 @@
+{
+  "trigger": true,
+  "modules": [
+    "alter-claims"
+  ],
+  "parentResource": "art59d7b7e0",
+  "functionName": "art59d7b7e0PreTokenGeneration",
+  "resourceName": "art59d7b7e0PreTokenGeneration",
+  "parentStack": "auth",
+  "triggerEnvs": [],
+  "triggerDir": "/Users/graham_bates/.nvm/versions/node/v12.17.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/PreTokenGeneration",
+  "triggerTemplate": "PreTokenGeneration.json.ejs",
+  "triggerEventPath": "PreTokenGeneration.event.json",
+  "roleName": "art59d7b7e0PreTokenGeneration",
+  "skipEdit": true,
+  "enableCors": false
+}
