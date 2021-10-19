@@ -12,6 +12,7 @@ const PrivateRoute = ({ component: Component, ...restProps }) => {
             {...restProps}
             render={() => {
                 if (!isLoggedIn && !isLoggingIn) {
+                    alert(12);
                     return <Redirect to="/login" />;
                 }
 

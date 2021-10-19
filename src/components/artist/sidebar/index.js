@@ -7,6 +7,8 @@ import SVG from '../../common/SVG'
 import {Button} from "@mui/material";
 import AddArtwork from "../artworks/AddArtwork";
 import SmallArtworkHolder from "./Holder/SmallArtworkHolder";
+import { Auth } from 'aws-amplify';
+import {useHistory} from "react-router-dom";
 
 const ARTIST = gql`
     query ArtistAndArtwork {
@@ -29,13 +31,14 @@ const ARTIST = gql`
 const Artist = ({artist, setBigSideBar, setSelectedArtwork}) => {
 
     const { user, refetch } = useContext(UserContext);
+    const history = useHistory();
 
     return <div>
 
 
         <div style={{backgroundColor : 'black', height: '200px', color : 'white'}}>
-            <h3>Filter : Published/Unpublished</h3>
-            <h3>Show stats : false</h3>
+            {/*<h3>Filter : Published/Unpublished</h3>*/}
+            {/*<h3>Show stats : false</h3>*/}
             <AddArtwork artist_id={artist.id} refetch={refetch} setBigSideBar={setBigSideBar}/>
         </div>
 
@@ -51,7 +54,7 @@ const Artist = ({artist, setBigSideBar, setSelectedArtwork}) => {
             <img style={{ height : '100px', filter: 'grayscale(100%)'}} src={'/tom.jpeg'} />
             <h3 style={{float : 'right'}}>Tom Morgan Jones</h3>
 
-            <a>Sign out </a>
+            <a onClick={() => {Auth.signOut().then(() => history.push('/login'))}}>Sign out </a>
 
         </div>
 

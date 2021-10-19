@@ -16,7 +16,9 @@ const MainTemplate = ({ children, ignores }) => {
     const [bigSideBar, setBigSideBar] = useState(false);
     const [selectedArtwork, setSelectedArtwork] = useState(null);
 
-    if (!user) return <span>loading</span>
+    console.log(user);
+    if (!user) return <div> loading {children}</div>
+
     return (
         <Box className="template">
             <Box

@@ -5,12 +5,12 @@ import Frame from "./Frame";
 
 export default () =>  <div className={'ArtworkHolder'}>
 
-    <Frame>
+    <div>
 
         <img src={'/example.png'} style={{width : 'auto', height : '200px'}}/>
 
 
 
-    </Frame>
+    </div>
 
 </div>
