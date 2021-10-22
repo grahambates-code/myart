@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import { UserAuthenticationContext } from 'components/providers/UserAuthenticationProvider';
 import { useLocation } from 'react-router-dom';
 import Footer from 'components/footer/Footer';
-import Artist from "../../components/artist/sidebar";
-import {UserContext} from "../../components/providers/UserProvider";
-import Main from "../../components/artist/artworks/Main/Main";
+import Artist from '../../components/artist/sidebar';
+import { UserContext } from '../../components/providers/UserProvider';
+import Main from '../../components/artist/artworks/Main/Main';
 import Header from 'components/header/Header';
 
 const MainTemplate = ({ children, ignores }) => {
@@ -22,12 +22,10 @@ const MainTemplate = ({ children, ignores }) => {
     return (
         <Box>
             <Header />
-            <Box>
-                {children}
-            </Box>
+            <Box>{children}</Box>
             <Footer />
         </Box>
-    )
+    );
 
     // return (
     //     <Box className="template">

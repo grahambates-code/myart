@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     app: {
         backgroundColor: common.black,
         color: common.white
-    }
+    },
 }));
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
             <Toolbar>
                 <Grid container={true}>
                     <Grid item={true} xs={true} />
-                    <Grid item={true} xs={12} sm={8}>
+                    <Grid item={true} xs={12} sm={9}>
                         <Box display="flex" alignItems="center">
                             <IconButton color="inherit" size="small" sx={{ mr: 1 }}>
                                 <SearchIcon />
