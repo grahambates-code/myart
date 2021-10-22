@@ -7,16 +7,22 @@ import PrivateRoute from './PrivateRoute';
 import PrivateTermsRoute from './PrivateTermsRoute';
 import PublicRoute from './PublicRoute';
 import MainTemplate from 'templates/main-template/MainTemplate';
+import HomePage from 'pages/home-page/HomePage';
 
 const Routes = () => {
-
     return (
         <Switch>
-            <MainTemplate ignores={[]}>
+            <Route path={['/', '/dashboard']}>
+                <MainTemplate>
+                    <PrivateRoute exact={true} path="/" component={HomePage} />
+                    <PrivateRoute exact={true} path="/dashboard" component={DashboardPage} />
+                </MainTemplate>
+            </Route>
+            <PublicRoute exact={true} path="/login" component={LoginPage} />
+            {/* <MainTemplate ignores={[]}>
                 <PrivateRoute exact={true} path="/dashboard" component={DashboardPage} />
-                <PublicRoute exact={true} path="/login" component={LoginPage} />
-                <PrivateTermsRoute exact={true} path={'/terms'} component={TermsPage}/>
-            </MainTemplate>
+                <PrivateTermsRoute exact={true} path={'/terms'} component={TermsPage} />
+            </MainTemplate> */}
         </Switch>
     );
 };

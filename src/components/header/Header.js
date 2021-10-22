@@ -1,106 +1,48 @@
-import React, { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
-import { AppBar, Toolbar, Grid, Box, Container, TextField, MenuItem } from '@mui/material';
+import React from 'react';
+import { AppBar, Toolbar, Box, Button, IconButton, Grid } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import Form from '@rjsf/material-ui';
-import SettingsContext from 'contexts/SettingsContext';
-import { AccountContext } from '../providers/AccountProvider';
-import { UserContext } from '../providers/UserProvider';
+import { common } from '@mui/material/colors';
+import SearchIcon from '@mui/icons-material/Search';
+import AppsIcon from '@mui/icons-material/Apps';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
     app: {
-        zIndex: 0,
-        paddingLeft: '0%',
-        paddingTop: theme.spacing(),
-        backgroundColor: 'white',
-        paddingBottom: theme.spacing(),
-    },
-    inheritColor: {
-        '& *': {
-            color: 'inherit',
-            borderColor: 'inherit',
-        },
-    },
+        backgroundColor: common.black,
+        color: common.white
+    }
 }));
-
-const LanguageSelectWidget = (props) => {
-    const classes = useStyles();
-
-    return (
-        <TextField
-            select={true}
-            label={props.label || props.schema.title}
-            variant="outlined"
-            color="primary"
-            size="small"
-            value={props.value}
-            onChange={(event) => props.onChange(event.target.value)}
-            fullWidth={true}
-            InputLabelProps={{
-                shrink: true,
-            }}
-            className={classes.inheritColor}
-            margin="dense"
-        >
-            {props.options.enumOptions.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                </MenuItem>
-            ))}
-        </TextField>
-    );
-};
 
 const Header = () => {
     const classes = useStyles();
-    const { t } = useTranslation();
-    const settingsContext = useContext(SettingsContext);
-    const { user } = useContext(UserContext);
-
-    if (!user) {
-        return null;
-    }
 
     return (
         <AppBar className={classes.app} position="static" elevation={0}>
             <Toolbar>
-                <Container>
-                    <Grid container={true} justifyContent="space-between">
-                        {/*<Box display="flex" alignItems="center">*/}
-                        {/*    {site.name}/{user?.UserName}*/}
-                        {/*</Box>*/}
-
-                        <Box minWidth={220}>
-                            {/*<Form*/}
-                            {/*    schema={{*/}
-                            {/*        type: 'string',*/}
-                            {/*        title: t('langSettings.title'),*/}
-                            {/*        value: settingsContext.language,*/}
-                            {/*        default: settingsContext.language,*/}
-                            {/*        anyOf: [*/}
-                            {/*            {*/}
-                            {/*                type: 'string',*/}
-                            {/*                title: t('langSettings.options.en'),*/}
-                            {/*                enum: ['en'],*/}
-                            {/*            },*/}
-
-                            {/*        ],*/}
-                            {/*    }}*/}
-                            {/*    uiSchema={{*/}
-                            {/*        'ui:widget': 'languageSelectWidget',*/}
-                            {/*    }}*/}
-                            {/*    widgets={{*/}
-                            {/*        languageSelectWidget: LanguageSelectWidget,*/}
-                            {/*    }}*/}
-                            {/*    onChange={({ formData }) => {*/}
-                            {/*        settingsContext.onChangeLanguage(formData);*/}
-                            {/*    }}*/}
-                            {/*>*/}
-                            {/*    <React.Fragment />*/}
-                            {/*</Form>*/}
+                <Grid container={true}>
+                    <Grid item={true} xs={true} />
+                    <Grid item={true} xs={12} sm={8}>
+                        <Box display="flex" alignItems="center">
+                            <IconButton color="inherit" size="small" sx={{ mr: 1 }}>
+                                <SearchIcon />
+                            </IconButton>
+                            <IconButton color="inherit" size="small" sx={{ mr: 1 }}>
+                                <AppsIcon />
+                            </IconButton>
+                            {/* <Box dis></Box> */}
+                            <Box display="flex" flexGrow={1} justifyContent="flex-end">
+                                <Button variant="text" size="small" color="inherit" sx={{ mr: 3 }}>
+                                    Company
+                                </Button>
+                                <Button variant="text" size="small" color="inherit" sx={{ mr: 3 }}>
+                                    Sign in
+                                </Button>
+                                <Button variant="contained" color="primary" size="small">
+                                    Get started
+                                </Button>
+                            </Box>
                         </Box>
                     </Grid>
-                </Container>
+                </Grid>
             </Toolbar>
         </AppBar>
     );
