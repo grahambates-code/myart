@@ -1,14 +1,50 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Skeleton } from '@mui/material';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import ArticleTemplate from 'templates/article-template/ArticleTemplate';
+import AssetSelect from './asset-select/AssetSelect';
 
-const News = () => {
+const ARTWORK_QUERY = gql`
+    query AssetQuery {
+        asset_table {
+            id
+            name
+            type
+            x
+            y
+            artwork_id
+            created_on
+            data
+        }
+    }
+`;
+
+const Assets = () => {
     return (
         <ArticleTemplate
             bgColor="black"
             content={
                 <ArticleTemplate.Content title="Assets" bgColor="white">
-                    Content Assets
+                    <Query query={ARTWORK_QUERY}>
+                        {({ loading, error, data }) => {
+                            if (loading) {
+                                return <Skeleton variant="rectangular" width="100%" height={200} />;
+                            }
+                            if (error) {
+                                return <Typography color="red">{error.message}</Typography>;
+                            }
+
+                            const assets = data.asset_table;
+                            return (
+                                <Box>
+                                    <AssetSelect assets={assets} onChange={(asset) => {
+                                        console.log('selected asset', asset);
+                                    }} />
+                                </Box>
+                            )
+                        }}
+                    </Query>
                 </ArticleTemplate.Content>
             }
             side={
@@ -43,4 +79,4 @@ const News = () => {
     );
 };
 
-export default News;
+export default Assets;

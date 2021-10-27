@@ -10,7 +10,7 @@ const ArticleContent = ({ title, onClickDetails, children, color, bgColor }) => 
                     <IconButton color="inherit" sx={{ mr: 1 }}>
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" color="inherit">
+                    <Typography variant="h6" color="inherit" fontWeight={300}>
                         {title}
                     </Typography>
                 </Box>
